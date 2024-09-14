@@ -1,5 +1,3 @@
-import e from "express";
-
 export const signUpProcess = async (req, res) => {
     const { logInId, nickName, password, joinDate, email } = req.body;
     // logInid 및 password는 정규표현식을 가지고 해당 Data가 필요 패턴을 충족하는지 검사해야한다. 그와 별개로 service에서 model을 사용해서 해당 logInId와 nickName이 중복되는지 또한 확인해야한다.
