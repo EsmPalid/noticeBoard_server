@@ -1,0 +1,4 @@
+# gitignore 파일 
+# 뭘 제외할지 딱히 생각나는건 없지만, 일단 node_modules , config 파일은 제외하자
+/node_modules
+/config

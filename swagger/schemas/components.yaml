@@ -1,0 +1,33 @@
+components:
+    schemas:
+        RequestLogInData:
+            type: object
+            required:
+                - userLogInId
+                - userPw
+            properties:
+                userLogInId:
+                    type: string
+                    format: varchar(255)
+                    nullable: false
+                userPw:
+                    type: string
+                    format: varchar(255)
+                    nullable: false
+            example:
+                userLogInId: wwllkim
+                userPw: asd123*
+
+        ResponseLogInData:
+            type: object
+            description: 성공적으로 LogIn 비지니스가 완료되면 , JSON 형태로 accessToken과 refreshToken가 Client에게 전달됨
+            properties:
+                accessToken:
+                    type: string
+                    description: 만료기간은 생성된 순간부터 하루
+                refreshToken:
+                    type: string
+                    description: 만료기간은 생성된 순간부터 1주일 , 상태는 DB에 저장됨
+            example:
+                accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
