@@ -1,0 +1,15 @@
+/api/public/signUp/checkLogInId:
+    post:
+        summary: 로그인 ID 중복확인 요청
+        tags:
+            - signUp
+        requestBody:
+            description: 회원가입 과정에서 , LogInId가 중복되었는지를 확인함
+            content:
+                application/json:
+                    schema:
+                        $ref: "#components/schemas/Response_DuplicateCheckLogInId"
+
+        responses:
+            200:
+                description: 중복된 LogInId가 존재하는지 확인함
