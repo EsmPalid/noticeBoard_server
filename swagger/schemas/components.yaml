@@ -66,6 +66,26 @@ components:
                 nickName: 무는개
                 Email: test123@gmail.com
 
+        Request_NickName:
+            type: object
+            required:
+                - nickName
+            properties:
+                nickName:
+                    type: string
+                    format: varchar(255)
+                    nullable: false
+
+        Request_LogInId:
+            type: object
+            required:
+                - userLogInId
+            properties:
+                userLogInId:
+                    type: string
+                    format: varchar(255)
+                    nullable: false
+
         Response_DuplicateCheckNickName:
             type: object
             required:
