@@ -13,9 +13,68 @@ const router = express.Router();
 router.get("/article");
 router.get("/content");
 
+/**
+ * @swagger
+ * /api/public/signUp:
+ *   post:
+ *       summary: 회원가입 기능
+ *       tags:
+ *          - signUp
+ *       requestBody:
+ *           description: 회원가입을 수행하기 위해 필요한 user Data
+ *           content:
+ *               application/json:
+ *                   schema:
+ *                       $ref: "#components/schemas/Request_SignUpData"
+ *
+ *       responses:
+ *           200:
+ *               description: 회원가입이 성공적으로 완료됨
+ *           400:
+ *               description: Client가 변조되었거나 , Email이 잘못되었음(하지만 Email 확인 절차는 복잡하므로 Pass)
+ *
+ */
+
 router.post("/signUp", signUpProcess);
 
+/**
+ * @swagger
+ * /api/public/signUp/checkNickName:
+ *   post:
+ *       summary: 닉네임 중복확인 요청
+ *       tags:
+ *          - signUp
+ *       requestBody:
+ *           description: 회원가입 과정에서 , NickName이 중복되었는지를 확인함
+ *           content:
+ *               application/json:
+ *                   schema:
+ *                       $ref: "#components/schemas/Response_DuplicateCheckNickName"
+ *
+ *       responses:
+ *           200:
+ *               description: 중복된 NickName이 존재하는지 확인함
+ */
 router.post("/signUp/checkNickName", checkNickname);
+
+/**
+ * @swagger
+ * /api/public/signUp/checkLogInId:
+ *   post:
+ *       summary: 로그인 ID 중복확인 요청
+ *       tags:
+ *           - signUp
+ *       requestBody:
+ *           description: 회원가입 과정에서 , LogInId가 중복되었는지를 확인함
+ *           content:
+ *               application/json:
+ *                   schema:
+ *                       $ref: "#components/schemas/Response_DuplicateCheckLogInId"
+ *
+ *       responses:
+ *           200:
+ *               description: 중복된 LogInId가 존재하는지 확인함
+ */
 router.post("/signUp/checkUserLogInId", checkUserLogInId);
 
 /**
@@ -26,11 +85,11 @@ router.post("/signUp/checkUserLogInId", checkUserLogInId);
  *       tags:
  *           - logIn
  *       requestBody:
- *           description: 로그인 수행을 Request하기 위한 , 필요한 Data
+ *           description: 로그인 수행을 Request_하기 위해 필요한 Data
  *           content:
  *               application/json:
  *                   schema:
- *                       $ref: "#/components/schemas/RequestLogInData"
+ *                       $ref: "#/components/schemas/Request_LogInData"
  *
  *       responses:
  *           200:
@@ -38,7 +97,7 @@ router.post("/signUp/checkUserLogInId", checkUserLogInId);
  *               content:
  *                   application/json:
  *                       schema:
- *                           $ref: "#/components/schemas/ResponseLogInData"
+ *                           $ref: "#/components/schemas/Response_LogInData"
  *           400:
  *                description: Client에서 받은 입력값이 잘못되었음
  *

@@ -1,6 +1,6 @@
 components:
     schemas:
-        RequestLogInData:
+        Request_LogInData:
             type: object
             required:
                 - userLogInId
@@ -18,7 +18,7 @@ components:
                 userLogInId: wwllkim
                 userPw: asd123*
 
-        ResponseLogInData:
+        Response_LogInData:
             type: object
             description: 성공적으로 LogIn 비지니스가 완료되면 , JSON 형태로 accessToken과 refreshToken가 Client에게 전달됨
             properties:
@@ -31,3 +31,59 @@ components:
             example:
                 accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
                 refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
+        Request_SignUpData:
+            type: object
+            required:
+                - userLogInId
+                - userPw
+                - nickName
+                - Email
+            properties:
+                userLogInId:
+                    type: string
+                    format: varchar(255)
+                    nullable: false
+                    description: 6~12자리의 영문 , 숫자 , - , _ 등의(이외에는 허용 안함)Pattern으로 이루어져 있어야함 , 중복확인 거쳐야 함
+                userPw:
+                    type: string
+                    format: varchar(255)
+                    description: 8~16자리의 영문, 숫자 , 특수문자 등(이외에는 허용안함,반드시 하나 이상 포함) Pattern으로 이루어져 있어야함
+                    nullable: false
+                nickName:
+                    type: string
+                    format: varchar(255)
+                    description: 8자리의 영문, 한글 , 숫자 등 , 중복확인 거쳐야함
+                    nullable: false
+                Email:
+                    type: string
+                    format: varchar(255)
+                    description: 딱히 재약안둠
+                    nullable: false
+            example:
+                userLogInId: wwllkim
+                userPw: asdf1234*
+                nickName: 무는개
+                Email: test123@gmail.com
+
+        Response_DuplicateCheckNickName:
+            type: object
+            required:
+                - result
+            properties:
+                result:
+                    type: boolean
+                    description: 중복된 NickName이 존재할 시 false , 없을 시 true
+            example:
+                result: true
+
+        Response_DuplicateCheckLogInId:
+            type: object
+            required:
+                - result
+            properties:
+                result:
+                    type: boolean
+                    description: 중복된 LogInId가 존재할 시 false , 없을 시 true
+            example:
+                result: true
