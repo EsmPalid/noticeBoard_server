@@ -75,7 +75,7 @@ const userCreate = async (
     await conn.query(
       `INSERT INTO user SET logIn_id=? , nick_name=? , password=? ,
             join_date=? , Email=? , account_locked=0 , 
-            create_ip=? , identity='normal' , login_location=?`,
+            client_ip=? , identity='normal' , login_location=?`,
       [id, nickName, hash, date, email, ip, userData],
     );
   } catch (err) {

@@ -10,9 +10,10 @@ export const logInProcess = async (req, res) => {
             res.json(result);
         } else {
             res.status(400);
+            res.send("데이터가 잘못되었음");
         }
     } else {
-        // 해당 Status 코드 , Client에서 잘못된 Reqeust에서 왔기 때문에 전달된다.
         res.status(400);
+        res.send("데이터가 잘못되었음");
     }
 };

@@ -38,7 +38,7 @@ components:
                 - userLogInId
                 - userPw
                 - nickName
-                - Email
+                - email
             properties:
                 userLogInId:
                     type: string
@@ -55,7 +55,7 @@ components:
                     format: varchar(255)
                     description: 8자리의 영문, 한글 , 숫자 등 , 중복확인 거쳐야함
                     nullable: false
-                Email:
+                email:
                     type: string
                     format: varchar(255)
                     description: 딱히 재약안둠
@@ -64,7 +64,27 @@ components:
                 userLogInId: wwllkim
                 userPw: asdf1234*
                 nickName: 무는개
-                Email: test123@gmail.com
+                email: test123@gmail.com
+
+        Request_NickName:
+            type: object
+            required:
+                - nickName
+            properties:
+                nickName:
+                    type: string
+                    format: varchar(255)
+                    nullable: false
+
+        Request_LogInId:
+            type: object
+            required:
+                - userLogInId
+            properties:
+                userLogInId:
+                    type: string
+                    format: varchar(255)
+                    nullable: false
 
         Response_DuplicateCheckNickName:
             type: object
