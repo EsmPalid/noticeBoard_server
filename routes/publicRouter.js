@@ -3,7 +3,7 @@ import { logInProcess } from "../controllers/logInController.js";
 import {
     signUpProcess,
     checkNickname,
-    checkUserLogInId,
+    checkLogInId,
 } from "../controllers/signUpController.js";
 
 const router = express.Router();
@@ -85,7 +85,7 @@ router.post("/signUp/checkNickName", checkNickname);
  *                      schema:
  *                          $ref: "#components/schemas/Response_DuplicateCheckLogInId"
  */
-router.post("/signUp/checkUserLogInId", checkUserLogInId);
+router.post("/signUp/checkLogInId", checkLogInId);
 
 /**
  * @swagger

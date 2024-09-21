@@ -4,7 +4,7 @@ import path from "path";
 import bodyParser from "body-parser";
 import fsNoPromise from "fs";
 import cookieParser from "cookie-parser";
-import coreMiddleware from "./middlewares/coreMiddleware.js";
+import corsMiddleware from "./middlewares/corsMiddleware.js";
 import authenticateToken from "./middlewares/authenticateToken.js";
 import publicRouter from "./routes/publicRouter.js";
 
@@ -17,7 +17,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(coreMiddleware);
+app.use(corsMiddleware);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use("/api/public", publicRouter);
